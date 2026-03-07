@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Kelas - Tema Orange</title>
+    <title>Website XK</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar transparent">
         <div class="container">
             <div class="logo">
                 <a href="#">
@@ -19,12 +19,22 @@
                 </a>
             </div>
 
-            <ul class="nav-links">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu-toggle" id="menuToggle"></div>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#event">Event</a></li>
                 <li><a href="#struktur">Struktur</a></li>
                 <li><a href="#member">Member</a></li>
             </ul>
+
         </div>
     </nav>
 
@@ -37,6 +47,38 @@
             <p>CIHUYYYY</p>
         </div>
     </section>
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2 class="about-title">Tentang Kami</h2>
+            <p class="about-desc">
+                zembut
+            </p>
+    
+            <div class="stats-container">
+            
+                <div class="stat-box">
+                    <div class="stat-icon">👦</div>
+                    <div class="stat-number" id="jumlahSiswa">0</div>
+                    <div class="stat-label">Siswa</div>
+                </div>
+            
+                <div class="stat-box">
+                    <div class="stat-icon">👧</div>
+                    <div class="stat-number" id="jumlahSiswi">0</div>
+                    <div class="stat-label">Siswi</div>
+                </div>
+            
+                <div class="stat-box">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number" id="jumlahEvent">0</div>
+                    <div class="stat-label">Event</div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+
 
     <section class="event" id="event">
         <h2 class="event-section-title">Event Kelas</h2>
@@ -63,6 +105,15 @@
         </div>
     </section>
 
+    <section class="struktur" id="struktur">
+        <div class="container-struktur">
+            <h2 class="section-title">Struktur Kelas</h2>
+            <div class="tree-wrapper">
+                <div class="tree" id="treeRoot"></div>
+            </div>
+        </div>
+    </section>
+    
     
     <script src="script.js"></script>
 

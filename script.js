@@ -1,3 +1,47 @@
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+        navbar.classList.remove("transparent");
+    } else {
+        navbar.classList.add("transparent");
+        navbar.classList.remove("scrolled");
+    }
+});
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+});
+
+const navItems = document.querySelectorAll("#navLinks a");
+
+/* Klik salah satu menu → auto tutup */
+navItems.forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+    });
+});
+
+/* Klik di luar menu → auto tutup */
+document.addEventListener("click", (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
+    }
+});
+
+/* Scroll → auto tutup */
+window.addEventListener("scroll", () => {
+    navLinks.classList.remove("active");
+    hamburger.classList.remove("active");
+});
+
 // --- DATA EVENT (TAMBAH DATA DISINI) ---
 const events = [
     {
@@ -70,3 +114,117 @@ initEvents();
 
 // Jalankan otomatis setiap 5 detik
 setInterval(updateEvent, 5000);
+
+// === DATA JUMLAH ===
+const totalSiswa = 15;   // GANTI sesuai jumlah asli
+const totalSiswi = 17;   // GANTI sesuai jumlah asli
+
+
+
+// Animasi angka rolling
+function animateNumber(id, target) {
+    const element = document.getElementById(id);
+
+    let randomDuration = 2000; // 2 detik angka random
+    let finalDuration = 800;   // 0.8 detik naik ke angka asli
+    let intervalTime = 40;
+
+    element.style.color = "#ff8c00";
+    
+    // 1️⃣ FASE RANDOM
+    const randomInterval = setInterval(() => {
+        let randomNum = Math.floor(Math.random() * (target + 20));
+        element.textContent = randomNum;
+    }, intervalTime);
+
+    setTimeout(() => {
+        clearInterval(randomInterval);
+
+        // 2️⃣ FASE NAIK KE ANGKA ASLI
+        let start = 0;
+        let increment = target / (finalDuration / intervalTime);
+
+        const finalInterval = setInterval(() => {
+            start += increment;
+
+            if (start >= target) {
+                element.textContent = target;
+                element.style.color = "#333";
+                clearInterval(finalInterval);
+            } else {
+                element.textContent = Math.floor(start);
+            }
+        }, intervalTime);
+
+    }, randomDuration);
+}
+
+// Jalankan setelah halaman load
+window.addEventListener("load", () => {
+    animateNumber("jumlahSiswa", totalSiswa);
+    animateNumber("jumlahSiswi", totalSiswi);
+    animateNumber("jumlahEvent", events.length); // otomatis dari data event
+});
+
+
+const dataStruktur = {
+    role: "Ketua",
+    name: "Nama Ketua",
+    img: "https://via.placeholder.com/150",
+    children: [{
+        role: "Wakil Ketua",
+        name: "Nama Wakil",
+        img: "https://via.placeholder.com/150",
+        children: [
+            {
+                role: "B1", // Jalur Kiri
+                name: "Bendahara 1",
+                img: "cihuy.png",
+                children: [{ role: "B2", name: "Bendahara 2", img: "https://via.placeholder.com/150" }]
+            },
+            {
+                role: "S1", // Jalur Kanan
+                name: "Sekretaris 1",
+                img: "https://via.placeholder.com/150",
+                children: [{ role: "S2", name: "Sekretaris 2", img: "https://via.placeholder.com/150" }]
+            }
+        ]
+    }]
+};
+
+function buildTree(node) {
+    let html = `<li>
+        <div class="node-content">
+            <div class="node-circle">
+                ${node.img ? `<img src="${node.img}">` : node.role[0]}
+            </div>
+            <p class="role">${node.role}</p>
+            <p class="name">${node.name}</p>
+        </div>`;
+    
+    if (node.children && node.children.length > 0) {
+        html += "<ul>";
+        node.children.forEach(child => {
+            html += buildTree(child);
+        });
+        html += "</ul>";
+    }
+    return html + "</li>";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const rootElement = document.getElementById("treeRoot");
+    if (rootElement) {
+        rootElement.innerHTML = `<ul>${buildTree(dataStruktur)}</ul>`;
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                document.querySelectorAll(".node-content").forEach((el, i) => {
+                    setTimeout(() => el.classList.add("appear"), i * 150);
+                });
+                observer.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.1 });
+        observer.observe(rootElement);
+    }
+});

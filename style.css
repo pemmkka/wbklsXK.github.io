@@ -6,12 +6,23 @@
 }
 
 .navbar {
-    background-color: #ff8c00;
-    padding: 10px 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    width: 100%;
+    height: 65px;
+    padding: 10px 0;
+    transition: 0.3s;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled {
+    background: #ff8c00;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar.transparent {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
 }
 
 .container {
@@ -61,6 +72,66 @@
     color: #333;
 }
 
+/* === HAMBURGER === */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* Animasi jadi X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(-120%);
+        transition: transform 0.5s ease;
+
+        /* 👇 BACKGROUND TRANSPARAN */
+        background: rgba(255, 140, 0, 0.5);
+        backdrop-filter: blur(8px);
+
+        padding: 20px 0;
+    }
+
+    .nav-links li {
+        margin: 25px 0;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+}
+
 /* --- Styling Hero Section --- */
 .home {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('WhatsApp Image 2026-02-05 at 11.47.55.jpeg');
@@ -84,7 +155,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 94%;
     z-index: -1;
     display: none;
     background-image:
@@ -92,7 +163,7 @@
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('WhatsApp Image 2026-02-28 at 20.43.02 (1).jpeg'),
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('WhatsApp Image 2026-02-28 at 20.46.51.jpeg');
     background-repeat: no-repeat;
-    background-size: 100% 33.33%, 100% 33.35%, 100% 33.33%, 100% 33.35%, 100% 33.33%, 120% 33.33%;
+    background-size: 100% 32.4%, 100% 32.35%, 100% 35.33%, 100% 35.31%, 100% 33.33%, 120% 32.33%;
     background-position: top, top, center, center, bottom, bottom;
 }
 
@@ -133,6 +204,103 @@
 .home p {
     font-size: 1.2rem;
     font-weight: 300;
+}
+
+/* === ABOUT SECTION (NEW STYLE) === */
+.about {
+    background: #ffffff;
+    padding: 20px 20px;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    color: #ff8c00;
+    margin-bottom: 15px;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+}
+
+.about-title::after {
+    content: "";
+    display: block;
+    width: 200px;
+    /* panjang garis */
+    height: 3px;
+    /* tebal garis */
+    background: linear-gradient(to right, transparent, #ff8c00, transparent);
+    /* warna orange tema */
+    margin: 12px auto 0;
+    /* jarak dari teks */
+    border-radius: 5px;
+}
+
+.about-desc {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* BOX STATISTIK */
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+
+.stat-box {
+    flex: 1;
+    min-width: 220px;
+    background: #f3f3f3;
+    /* abu soft */
+    padding: 40px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.stat-box:hover {
+    border: 2px solid #ff8c00;
+    transform: translateY(-5px);
+}
+
+/* ICON */
+.stat-icon {
+    font-size: 35px;
+    color: #ff8c00;
+    margin-bottom: 15px;
+}
+
+/* ANGKA */
+.stat-number {
+    transition: 0.3s;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #333;
+}
+
+/* LABEL */
+.stat-label {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+    }
 }
 
 /* --- Styling Dasar Event Section --- */
@@ -315,7 +483,7 @@
 
     .event-info-panel {
         width: 100%;
-        
+
         padding: 40px 25px;
         /* Mengurangi padding agar teks punya ruang */
         text-align: center;
@@ -341,4 +509,207 @@
     .info-content p {
         font-size: 0.95rem;
     }
+}
+
+
+/* === SECTION STRUKTUR === */
+/* Warna Orange untuk Judul Struktur */
+.section-title {
+    color: #ff8c00;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    /* Jarak ke gambar pohon */
+    text-align: center;
+}
+
+/* Menggeser section agar lebih naik */
+.struktur {
+    background: #ffffff;
+    padding: 40px 10px;
+    /* Padding atas dikecilkan agar tulisan naik */
+    text-align: center;
+}
+
+/* --- KODE UNTUK MEMPERBESAR SELURUH POHON --- */
+.tree {
+    display: inline-block;
+    transform: scale(2.0);
+    /* UBAH ANGKA INI: 1.5 jika ingin lebih besar, 1.2 jika terlalu besar */
+    transform-origin: top center;
+    margin-top: 30px;
+    margin-bottom: 100px;
+    /* Jarak bawah agar tidak menabrak section setelahnya */
+}
+
+/* Pastikan wrapper tidak memotong pohon yang sudah diperbesar */
+.tree-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: visible;
+    padding: 20px 0;
+    margin-top: -65px;
+}
+
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+}
+
+/* --- GARIS PENGHUBUNG ORANYE --- */
+.tree li::before,
+.tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 2px solid #ff8c00;
+    width: 50%;
+    height: 20px;
+}
+
+.tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 2px solid #ff8c00;
+}
+
+.tree li:only-child::after,
+.tree li:only-child::before {
+    display: none;
+}
+
+.tree li:only-child {
+    padding-top: 0;
+}
+
+.tree li:first-child::before,
+.tree li:last-child::after {
+    border: 0 none;
+}
+
+.tree li:last-child::before {
+    border-right: 2px solid #ff8c00;
+    border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+}
+
+.tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid #ff8c00;
+    width: 0;
+    height: 20px;
+}
+
+/* --- KONTEN & LINGKARAN --- */
+.node-content {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.node-content.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.node-circle {
+    width: 60px;
+    /* Ukuran pas untuk Mobile agar tidak tabrakan */
+    height: 60px;
+    border: 3px solid #ff8c00;
+    border-radius: 50%;
+    margin: 0 auto 5px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #ff8c00;
+    overflow: hidden;
+}
+
+.node-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.role {
+    font-weight: 800;
+    font-size: 0.65rem;
+    color: #ff8c00;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.name {
+    font-size: 0.6rem;
+    color: #333;
+    font-weight: 600;
+}
+
+/* --- KHUSUS MOBILE (AGAR TIDAK MELEBAR) --- */
+@media (max-width: 480px) {
+    .tree li {
+        padding: 20px 2gpx 0 2px;
+    }
+
+    .node-circle {
+        width: 50px;
+        height: 50px;
+        border-width: 2px;
+    }
+
+    .role {
+        font-size: 0.55rem;
+    }
+
+    .name {
+        font-size: 0.5rem;
+    }
+}
+
+/* Tampilan Laptop */
+@media (min-width: 769px) {
+    .node-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .role {
+        font-size: 0.8rem;
+    }
+
+    .name {
+        font-size: 0.75rem;
+    }
+}
+
+/*menyesuaikan css nya */
+section {
+    scroll-margin-top: 65px;
+    /* sesuaikan tinggi navbar kamu */
+}
+
+html {
+    scroll-behavior: smooth;
 }

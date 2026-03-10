@@ -5,6 +5,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    /* Mencegah seluruh web goyang ke samping */
+}
+
 .navbar {
     position: fixed;
     top: 0;
@@ -78,6 +85,7 @@
     flex-direction: column;
     cursor: pointer;
     gap: 6px;
+    margin-right: -200px;
 }
 
 .hamburger span {
@@ -308,14 +316,14 @@
     background-color: #fff5e6;
     /* Warna latar belakang cream */
     padding: 40px 20px;
-    min-height: 100vh;
 }
 
 .event-section-title {
     text-align: center;
     color: #ff8c00;
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    margin-top: -10px;
     font-weight: 800;
 }
 
@@ -455,11 +463,16 @@
 
 /* --- MEDIA QUERY: POTRET (MOBILE) --- */
 @media (max-width: 900px) {
+    .event {
+        min-height: 100vh;
+    }
+    
     .event-container {
         flex-direction: column;
         /* Mengubah susunan jadi atas-bawah */
         max-width: 100%;
         margin: 0 10px;
+        min-height: 100;
     }
 
     .event-visual-area {
@@ -475,27 +488,29 @@
     }
 
     .main-frame {
-        width: 85%;
+        width: 90%;
         /* Sedikit lebih kecil agar cantik di layar HP */
         aspect-ratio: 16/9;
         /* Sesuaikan rasio agar tidak terlalu panjang */
+        margin-top: -210px;
     }
 
     .event-info-panel {
         width: 100%;
-
-        padding: 40px 25px;
+        margin-top: -210px;
+        padding: 100px 25px;
         /* Mengurangi padding agar teks punya ruang */
         text-align: center;
         flex: none;
         display: block;
         /* Memastikan konten teks turun ke bawah */
     }
+    
 
     /* Gradasi diubah jadi vertikal untuk mobile */
     .event-info-panel::before {
         left: 0;
-        top: -40px;
+        top: -35px;
         width: 100%;
         height: 40px;
         background: linear-gradient(to bottom, rgba(255, 245, 230, 0), #fff5e6);
@@ -518,7 +533,7 @@
     color: #ff8c00;
     font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: -200px;
     /* Jarak ke gambar pohon */
     text-align: center;
 }
@@ -526,20 +541,22 @@
 /* Menggeser section agar lebih naik */
 .struktur {
     background: #ffffff;
-    padding: 40px 10px;
-    /* Padding atas dikecilkan agar tulisan naik */
     text-align: center;
+    padding: 50px 0; /* Padding atas dikecilkan agar tulisan naik */
+    min-height: auto;
+    display: block;
+    /* Memastikan setiap seksi setidaknya setinggi 80% layar */
 }
 
-/* --- KODE UNTUK MEMPERBESAR SELURUH POHON --- */
 .tree {
     display: inline-block;
-    transform: scale(2.0);
-    /* UBAH ANGKA INI: 1.5 jika ingin lebih besar, 1.2 jika terlalu besar */
+    transform: scale(1.5);
+    /* Gunakan 1.5 agar tidak terlalu raksasa */
     transform-origin: top center;
-    margin-top: 30px;
-    margin-bottom: 100px;
-    /* Jarak bawah agar tidak menabrak section setelahnya */
+    /* PENTING: Perbesaran mulai dari atas */
+    margin-top: 10px;
+    margin-bottom: 300px;
+    /* Margin besar untuk memberi ruang hasil scale */
 }
 
 /* Pastikan wrapper tidak memotong pohon yang sudah diperbesar */
@@ -547,9 +564,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    overflow: visible;
-    padding: 20px 0;
-    margin-top: -65px;
+    padding: 200px;
 }
 
 .tree ul {
@@ -574,7 +589,7 @@
     position: absolute;
     top: 0;
     right: 50%;
-    border-top: 2px solid #ff8c00;
+    border-top: 3px solid #ff8c00;
     width: 50%;
     height: 20px;
 }
@@ -582,7 +597,7 @@
 .tree li::after {
     right: auto;
     left: 50%;
-    border-left: 2px solid #ff8c00;
+    border-left: 3px solid #ff8c00;
 }
 
 .tree li:only-child::after,
@@ -600,7 +615,7 @@
 }
 
 .tree li:last-child::before {
-    border-right: 2px solid #ff8c00;
+    border-right: 3px solid #ff8c00;
     border-radius: 0 5px 0 0;
 }
 
@@ -613,7 +628,7 @@
     position: absolute;
     top: 0;
     left: 50%;
-    border-left: 2px solid #ff8c00;
+    border-left: 3px solid #ff8c00;
     width: 0;
     height: 20px;
 }
@@ -667,29 +682,23 @@
     font-weight: 600;
 }
 
-/* --- KHUSUS MOBILE (AGAR TIDAK MELEBAR) --- */
-@media (max-width: 480px) {
-    .tree li {
-        padding: 20px 2gpx 0 2px;
+@media (max-width: 768px) {
+    .tree {
+        zoom: 1.1;
+        /* Perkecil skala di layar kecil */
+        margin-bottom: 30px;
     }
 
-    .node-circle {
-        width: 50px;
-        height: 50px;
-        border-width: 2px;
-    }
-
-    .role {
-        font-size: 0.55rem;
-    }
-
-    .name {
-        font-size: 0.5rem;
+    .member-card {
+        transform: scale(1);
+        /* Pastikan kartu member tidak terlalu besar di HP */
     }
 }
 
+
 /* Tampilan Laptop */
 @media (min-width: 769px) {
+
     .node-circle {
         width: 80px;
         height: 80px;
@@ -701,6 +710,311 @@
 
     .name {
         font-size: 0.75rem;
+    }
+}
+
+/* Responsif untuk layar pendek (Landscape HP atau Tablet) */
+@media (max-height: 600px) {
+    .tree {
+        transform: scale(1);
+        /* Kecilkan sedikit jika layar pendek */
+        margin-bottom: 50px;
+    }
+}
+
+/* Container Utama Carousel */
+/* --- PERBAIKAN MEMBER SECTION --- */
+.member {
+    background: #f9f9f9;
+    padding: 20px 0;
+    margin-top: -200px;
+    /* Angka negatif ini akan menarik bagian member ke atas */
+    position: relative;
+    z-index: 10;
+}
+.member-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 40px 0;
+}
+
+.member-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    /* Ubah ke hidden agar tidak berantakan di landscape */
+    position: relative;
+    z-index: 5;
+    margin-top: 30px;
+    cursor: grab;
+    touch-action: pan-x;
+    /* Fokuskan touch hanya untuk geser horizontal */
+}
+
+.member-track {
+    display: flex;
+    align-items: flex-start;
+    /* Agar kartu tidak dipaksa tinggi sama jika isinya beda */
+    gap: 15px;
+    /* Jarak antar kartu agar efek mengintip pas */
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Bingkai Member */
+.member-card {
+    flex: 0 0 450px;
+    /* Ukuran Lebar Bingkai (Bisa Diedit) */
+    min-height: 250px;
+    /* Tinggi minimal agar tidak gepeng (Bisa Diedit) */
+    background: #fff;
+    border-radius: 40px;
+    border: 3px solid #ff8c00;
+    padding: 30px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    /* Mengunci konten di dalam bingkai */
+    text-align: left;
+    transition: all 0.5s ease;
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+.member-card.active {
+    z-index: 10;
+    /* Kartu yang aktif selalu berada di paling depan/atas */
+    position: relative;
+    opacity: 1;
+    transform: scale(1.1);
+    /* Sedikit lebih besar saat di tengah */
+    box-shadow: 0 15px 35px rgba(255, 140, 0, 0.2);
+}
+
+/* FOTO (Kiri Atas) */
+.m-card-visual {
+    width: 130px;
+    /* Lebar Foto (Bisa Diedit) */
+    height: 130px;
+    /* Tinggi Foto (Bisa Diedit) */
+    border: 3px solid #ff8c00;
+    border-radius: 15px;
+    float: left;
+    /* Teks akan berada di samping foto */
+    margin-right: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.m-card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Agar foto tidak gepeng */
+}
+
+/* Informasi Teks */
+.m-card-info .absent {
+    display: block;
+    font-size: 0.8rem;
+    color: #ff8c00;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+}
+
+.m-card-info h3 {
+    font-size: 1.2rem;
+    /* Ukuran Nama (Bisa Diedit) */
+    margin: 5px 0;
+    color: #333;
+    line-height: 1.2;
+}
+
+/* Deskripsi yang mengalir ke bawah foto */
+.member-card p {
+font-size: 0.85rem;
+    /* Ukuran Deskripsi (Bisa Diedit) */
+    line-height: 1.4;
+    color: #444;
+    margin: 0;
+    /* Ini rahasianya agar teks tidak menabrak sisa float */
+    word-wrap: break-word;
+}
+
+/* Tombol Lihat Semua (Agar ke Tengah) */
+.member-footer {
+    position: relative;
+    z-index: 1;
+    /* Tombol di lapisan bawah */
+    margin-top: 50px;
+    /* Menarik area tombol ke atas agar 'masuk' ke area kartu */
+    display: flex;
+    justify-content: center;
+}
+
+.btn-view-all {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff8c00;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-view-all:hover {
+    transform: scale(1.05);
+    background-color: #e67e00;
+}
+
+/* Pastikan container swipe tidak membatasi gerakan */
+.member-carousel-container {
+    width: 100%;
+    overflow: visible;
+    /* Diubah ke visible agar bayangan/kartu tidak terpotong saat menindih */
+    position: relative;
+    z-index: 5;
+    /* Membuat area kartu lebih tinggi lapisannya dari judul */
+    margin-top: 250px;
+    /* Menarik kartu ke atas untuk menindih teks judul */
+    cursor: grab;
+    /* Memberi indikasi bisa digeser mouse */
+    touch-action: pan-y;
+    /* Mengizinkan scroll vertikal tapi menangkap geser horizontal */
+}
+
+.member-section-title {
+    margin-top: 50px;
+    /* Nilai minus akan menarik posisi ke atas */
+    margin-bottom: 40px;
+}
+
+.member-carousel-container:active {
+    cursor: grabbing;
+}
+
+/* Penyesuaian Mobile agar tetap mengintip simetris */
+@media (max-width: 600px) {
+    .member {
+        margin-top: 0px;
+        /* Angka negatif ini akan menarik bagian member ke atas */
+    }
+    
+    .member-card {
+        flex: 0 0 280px;
+        /* Perkecil sedikit di HP agar kartu samping terlihat */
+    }
+}
+
+/* --- SEKSI ADMIN CONTACT --- */
+.admin-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.admin-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.admin-card {
+    background-color: #ff8c00;
+    /* Background Oranye */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-radius: 100px;
+    /* Bentuk kapsul */
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+    color: white;
+}
+
+.admin-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pp-bundar {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    /* Membuat Bulat Sempurna */
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.pp-bundar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-text h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.admin-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.cp-text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.ig-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #ff8c00;
+    /* Teks warna oranye */
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.ig-link img {
+    width: 18px;
+    height: 18px;
+}
+
+.ig-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    .admin-card {
+        flex-direction: column;
+        border-radius: 30px;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .admin-left {
+        flex-direction: column;
+    }
+
+    .admin-right {
+        align-items: center;
     }
 }
 

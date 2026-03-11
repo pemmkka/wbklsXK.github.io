@@ -240,9 +240,42 @@ let prevTranslate = 0;
 
 // Contoh Data
 const dataMember = [
-    { nama: "Candra Wijaya", absen: "03", bio: "Atlet futsal yang humoris dan suka membantu teman-teman di kelas saat kesulitan pelajaran olahraga.", foto: "p1.jpg" },
-    { nama: "Dian Pratama", absen: "04", bio: "Juara kelas yang hobi membaca buku sejarah dan sangat menyukai kucing. Jika deskripsi ini panjang, dia akan mengisi ruang kosong di bawah fotonya sendiri.", foto: "p2.jpg" },
-    { nama: "Eka Saputra", absen: "05", bio: "Gamer sejati yang bercita-cita menjadi e-sports player profesional.", foto: "p3.jpg" }
+  { "nama": "ABELINDA SITI AZZAHRA", "absen": "01", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "ACHMAD MAULANA BAIHAQI", "absen": "02", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "AHMAD FARDAN PRASETYA HUDI", "absen": "03", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "AIDINA REGINA PRATITA", "absen": "04", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "AIMADINI IRINE AMANTA", "absen": "05", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "AJENG PRINANTA TUNGGA DEWI", "absen": "06", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "ALDAZ ZANITA WINUNAH", "absen": "07", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "ALMIRA DWI FITHRIYAH", "absen": "08", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "AMIRA PUTRI JANEETA", "absen": "09", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "ASHILAH ZAHRA SISPRIANO PUTRI", "absen": "10", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "AULIA KUNTUM DWI LESTARI", "absen": "11", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "AYUDIANA RAHMA JULIYANTI", "absen": "12", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "CICIM NASKAH PUNGSI NAWANGATI", "absen": "13", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "DESHELVA QUEENRESKI SUWARNO", "absen": "14", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "DEWI KIRANA WULANSARI", "absen": "15", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "ELVARETTA JOLINE SITARESMI PATTIWA", "absen": "16", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "FEBRIANANDA DAVIN AKMAL", "absen": "17", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "HAFIZA SURURUL ATFA", "absen": "18", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "HIYASATAKUNU AMIRAH AFIFATUL MU", "absen": "19", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "JASMINE UFAIROH", "absen": "20", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "MUHAMMAD BAGAS PUTRASON PRADA", "absen": "21", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "MUHAMMAD UWAISS UNO MALIKI", "absen": "22", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "NADHIIFA NUR 'AQILA ZAIN", "absen": "23", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "NADILA ISHARA PUTRI", "absen": "24", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "NAURAGISTA RONA AZZAHRA", "absen": "25", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "NOVIM ADI PRASTYO", "absen": "26", "bio": "ihiiiii", "foto": "p3.jpg" },
+  { "nama": "NUR ZAHROTUL HIKMAH", "absen": "27", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "OKTAVIA ANYA AURELA NINGSIH", "absen": "28", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "OLIVIA RIZKY DJAZULI", "absen": "29", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "RACHEL MUTIA", "absen": "30", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "RINI MAILANI PUTRI", "absen": "31", "bio": "no bio yet.", "foto": "p3.jpg" },
+  { "nama": "SELLY AMANDA NUR HAFIDZAH", "absen": "32", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "SULTAN DZULFIKAR MUHAMMAD", "absen": "33", "bio": "no bio yet.", "foto": "p2.jpg" },
+  { "nama": "UMAR SAID", "absen": "34", "bio": "Loh onok bio ne emang e?.", "foto": "p3.jpg" },
+  { "nama": "VIOLETA APRILIA KOMARUDIN", "absen": "35", "bio": "no bio yet.", "foto": "p1.jpg" },
+  { "nama": "WENDI MORENO HALIM", "absen": "36", "bio": "no bio yet.", "foto": "p2.jpg" }
 ];
 
 function renderMembers() {
@@ -338,3 +371,4 @@ swipeArea.addEventListener('touchstart', () => {
 swipeArea.addEventListener('touchend', () => {
     autoSwipeTimer = setInterval(nextSlide, 1000); // Jalan lagi setelah dilepas
 });
+
